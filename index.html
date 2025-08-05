@@ -14,6 +14,15 @@
             background-color: #f8f9fa;
             color: #212529;
         }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
         .nav-link {
             position: relative;
             transition: color 0.3s;
@@ -51,7 +60,7 @@
 
     <main>
         <section id="home" class="pt-32 pb-20 min-h-screen flex items-center">
-            <div class="max-w-4xl mx-auto px-6 text-center md:text-left">
+            <div class="max-w-4xl mx-auto px-6 text-center md:text-left fade-in">
                 <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-gray-900 leading-tight">
                     Elite Access for Strategic Insight.
                 </h1>
@@ -67,7 +76,7 @@
         </section>
 
         <section id="about" class="py-20 bg-white">
-            <div class="max-w-4xl mx-auto px-6">
+            <div class="max-w-4xl mx-auto px-6 fade-in">
                 <div class="text-center">
                     <h2 class="text-3xl font-bold tracking-tight text-gray-900">Our Mission</h2>
                     <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto text-left">
@@ -88,7 +97,7 @@
         </section>
 
         <section id="contact" class="py-20">
-            <div class="max-w-4xl mx-auto px-6">
+            <div class="max-w-4xl mx-auto px-6 fade-in">
                 <h2 class="text-3xl font-bold tracking-tight text-gray-900 text-center">Begin a Confidential Discussion</h2>
                 <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto text-left">
                     To understand how our unique access can provide the clarity you need, please initiate contact. All inquiries are handled with the utmost discretion.
@@ -107,6 +116,28 @@
             <p>&copy; 2025 Prometheus Advisory. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Simple fade-in on scroll animation
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = {
+            threshold: 0.2,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('visible');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+    </script>
 
 </body>
 </html>
