@@ -14,15 +14,6 @@
             background-color: #f8f9fa;
             color: #212529;
         }
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
         .nav-link {
             position: relative;
             transition: color 0.3s;
@@ -44,10 +35,11 @@
     </style>
 </head>
 <body class="antialiased">
+
     <header class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-10 border-b border-gray-200">
         <div class="max-w-4xl mx-auto px-6">
             <div class="flex justify-between items-center h-16">
-                <a href="#home" class="text-xl font-bold text-gray-800">Prometheus Advisory</a>
+                <a href="#home" class="text-2xl font-bold text-gray-800">Prometheus Advisory</a>
                 <nav class="hidden md:flex space-x-8">
                     <a href="#home" class="nav-link text-gray-600 hover:text-gray-900">Home</a>
                     <a href="#about" class="nav-link text-gray-600 hover:text-gray-900">About</a>
@@ -56,9 +48,10 @@
             </div>
         </div>
     </header>
+
     <main>
         <section id="home" class="pt-32 pb-20 min-h-screen flex items-center">
-            <div class="max-w-4xl mx-auto px-6 text-center md:text-left fade-in">
+            <div class="max-w-4xl mx-auto px-6 text-center md:text-left">
                 <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-gray-900 leading-tight">
                     Elite Access for Strategic Insight.
                 </h1>
@@ -72,11 +65,12 @@
                 </div>
             </div>
         </section>
+
         <section id="about" class="py-20 bg-white">
-            <div class="max-w-4xl mx-auto px-6 fade-in">
+            <div class="max-w-4xl mx-auto px-6">
                 <div class="text-center">
                     <h2 class="text-3xl font-bold tracking-tight text-gray-900">Our Mission</h2>
-                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto text-left">
                         We operate beyond conventional boundaries, establishing the trusted networks necessary to connect our clients with key leaders and insights that others cannot reach.
                     </p>
                 </div>
@@ -92,13 +86,14 @@
                 </div>
             </div>
         </section>
+
         <section id="contact" class="py-20">
-            <div class="max-w-4xl mx-auto px-6 text-center fade-in">
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900">Begin a Confidential Discussion</h2>
-                <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+            <div class="max-w-4xl mx-auto px-6">
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 text-center">Begin a Confidential Discussion</h2>
+                <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto text-left">
                     To understand how our unique access can provide the clarity you need, please initiate contact. All inquiries are handled with the utmost discretion.
                 </p>
-                <div class="mt-8">
+                <div class="mt-8 text-center">
                     <a href="mailto:info@prometheus-advisory.com" class="inline-block bg-white text-blue-600 font-semibold text-xl px-8 py-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-200">
                         info@prometheus-advisory.com
                     </a>
@@ -106,31 +101,12 @@
             </div>
         </section>
     </main>
+
     <footer class="bg-white border-t border-gray-200">
         <div class="max-w-4xl mx-auto py-6 px-6 text-center text-gray-500">
             <p>&copy; 2025 Prometheus Advisory. All Rights Reserved.</p>
         </div>
     </footer>
-    <script>
-        // Simple fade-in on scroll animation
-        const faders = document.querySelectorAll('.fade-in');
-        const appearOptions = {
-            threshold: 0.2,
-            rootMargin: "0px 0px -50px 0px"
-        };
-        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) {
-                    return;
-                } else {
-                    entry.target.classList.add('visible');
-                    appearOnScroll.unobserve(entry.target);
-                }
-            });
-        }, appearOptions);
-        faders.forEach(fader => {
-            appearOnScroll.observe(fader);
-        });
-    </script>
+
 </body>
 </html>
